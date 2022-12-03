@@ -1,0 +1,25 @@
+.card{
+    background-color: rgba(34, 42, 62, 0.5);
+    display:block;
+    width: max-content;
+    padding: 2rem 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size:1.5rem;
+    position: relative;
+}
+.close-btn{
+    color: rgb(255, 75, 75);
+    border: thin solid rgb(255, 255, 255);
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}

@@ -1,0 +1,17 @@
+.LinkForm {
+  border: thick solid yellow;
+}
+
+.Form {
+  border: thick solid red;
+  max-width: 600px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  gap: 1rem
+}
