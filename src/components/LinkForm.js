@@ -28,7 +28,7 @@ export default function LinkForm({ addOrEditLink, message, links, currentId }) {
   }, [currentId, links]);
 
   return (
-    <div className="LinkForm">
+    <div className="LinkForm card">
       <form className="Form" onSubmit={handleSubmit}>
         <label>
           Write a URL

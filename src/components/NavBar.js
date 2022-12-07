@@ -3,7 +3,9 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import "./Navbar.css";
 
 export default function NavBar() {
-  const { isLogged, logout, setUser } = useAuthContext();
+// TODO extrae isLogged de useAuth;
+let isLogged = true;
+  const { logout, setUser } = useAuthContext();
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {

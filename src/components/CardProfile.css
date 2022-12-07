@@ -1,0 +1,17 @@
+.card-profile {
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #2a3d4a;
+  border-radius: 10px;
+}
+.card-profile figure {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.card-profile img {
+  border-radius: 50%;
+}
+.card-profile h3 {
+  font-size: 1.5rem;
+}

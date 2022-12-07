@@ -1,20 +1,22 @@
-body{
+body {
   background-color: #335157;
   color: #fff;
 }
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
 }
 
-li{
+li {
   list-style-type: none;
 }
-a{
+a {
   display: block;
   text-decoration: none;
   color: #fff;
@@ -31,3 +33,15 @@ a{
   color: #fff;
   background-color: #2a3d4a;
 }
+
+.dashboard {
+  padding: 1.5rem;
+}
+
+.card{
+  width: 100%;   
+  padding: 1.5rem;
+  background-color: #2a3d4a;
+  border-radius: 10px;
+}
+

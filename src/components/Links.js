@@ -11,17 +11,18 @@ import {
 
 import "./Links.css";
 import { toast } from "react-toastify";
+import CardLink from "./CardLink";
 
 export default function Links() {
   const [links, setLinks] = useState([]);
   const [currentId, setCurrentId] = useState("");
-  const [data, setData] = useState({})
+  const [data, setData] = useState({});
 
   const addOrEditLink = async (linkObject) => {
     console.log(linkObject);
     try {
       const data = await addDoc(collection(db, "try1"), linkObject);
-      console.log(data)
+      console.log(data);
       setData(data);
       toast("New Link agregado", {
         type: "success",
@@ -60,7 +61,7 @@ export default function Links() {
     getLinks();
   }, [data]);
   return (
-    <div>
+    <section className="card">
       <LinkForm
         addOrEditLink={addOrEditLink}
         message={currentId}
@@ -69,21 +70,15 @@ export default function Links() {
       />
       {links.length > 0 ? (
         links.map((link) => (
-          <ul key={link.name} className="card">
-            <div className="close-btn" onClick={() => deleteLink(link.id)}>
-              X
-            </div>
-            <div className="edit-btn" onClick={() => setCurrentId(link.id)}>
-              ✎
-            </div>
-            <li>{link.description}</li>
-            <li>{link.name}</li>
-            <li>{link.url}</li>
-          </ul>
+          <CardLink
+            link={link}
+            deleteLink={deleteLink}
+            setCurrentId={setCurrentId}
+          />
         ))
       ) : (
         <p>non ci sono elementi da mostrare</p>
       )}
-    </div>
+    </section>
   );
 }

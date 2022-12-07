@@ -10,6 +10,7 @@ export default function LoginForm() {
   const { login, setUser } = useAuthContext();
   const [form, setForm] = useState(initialForm);
   const navigate = useNavigate();
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.email || !form.password)
