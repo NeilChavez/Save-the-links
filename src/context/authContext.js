@@ -1,15 +1,15 @@
 import { createContext, useState } from "react";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
- const authContext = createContext();
-const auth = getAuth();
+import { auth } from "../firebase.js";
+const authContext = createContext();
 
 function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const register = (email, password) => {
     // ritorna una promessa, gestisci l'errore nella funzione dove la chiami TODO
@@ -25,11 +25,11 @@ function AuthContextProvider({ children }) {
   };
 
   return (
-    <authContext.Provider value={{ user, register, login, logout }}>
+    <authContext.Provider value={{ user, setUser, register, login, logout }}>
       {children}
     </authContext.Provider>
   );
 }
 
-export default authContext
-export {AuthContextProvider}
+export default authContext;
+export { AuthContextProvider };

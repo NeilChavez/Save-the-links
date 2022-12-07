@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 import "./Navbar.css";
 
 export default function NavBar() {
-  const isLogged = true;
+  // deve arrivare dal backend se e´ loggato o no l'utente TODO
+  const {isLogged} = useAuthContext();
+
   return (
     <nav className="navbar">
       <ul className="navbar-list">
@@ -15,6 +18,15 @@ export default function NavBar() {
           <div className="login-register-wrapper">
             {isLogged ? (
               <>
+                <Link className="navbar-list-link link" to="/dashboard">
+                  My page
+                </Link>
+                <Link className="navbar-list-link link" to="/login">
+                  logout
+                </Link>
+              </>
+            ) : (
+              <>
                 <Link className="navbar-list-link link" to="/login">
                   Login
                 </Link>
@@ -22,10 +34,6 @@ export default function NavBar() {
                   Register
                 </Link>
               </>
-            ) : (
-              <Link className="navbar-list-link link" to="/login">
-                logout
-              </Link>
             )}
           </div>
         </li>
