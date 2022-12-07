@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import "./LoginForm.css";
 const initialForm = {
@@ -8,6 +9,7 @@ const initialForm = {
 export default function LoginForm() {
   const { login, setUser } = useAuthContext();
   const [form, setForm] = useState(initialForm);
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.email || !form.password)
@@ -15,6 +17,7 @@ export default function LoginForm() {
     try {
       const data = await login(form.email, form.password);
       setUser(data);
+      navigate("/dashboard");
     } catch (err) {
       console.warn(err);
     }
