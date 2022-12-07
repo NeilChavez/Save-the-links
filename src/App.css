@@ -1,4 +1,33 @@
 body{
-  background-color: rgb(51, 81, 87);
+  background-color: #335157;
   color: #fff;
+}
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  list-style-type: none;
+}
+a{
+  display: block;
+  text-decoration: none;
+  color: #fff;
+}
+
+.link {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  border-radius: 10px;
+  border: medium solid #fff;
+  color: #fff;
+  background-color: #2a3d4a;
 }

@@ -1,0 +1,36 @@
+.navbar {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  height: 3.5rem;
+  background-color: #2a3d4a;
+  border-bottom: thin solid rgb(163, 162, 162);
+  padding: 0.25rem 0;
+}
+.home-title {
+  font-size: 1.5rem;
+}
+.navbar-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 3.5rem;
+}
+.navbar-list-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.login-register-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  gap: 2.5rem;
+  padding: 0.3rem 0;
+}
+.login-register-wrapper .navbar-list-link {
+  font-size: 1.2rem;
+}
+

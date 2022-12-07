@@ -10,17 +10,21 @@ import {
 } from "firebase/firestore";
 
 import "./Links.css";
+import { toast } from "react-toastify";
 
 export default function Links() {
   const [links, setLinks] = useState([]);
-  const [localLink, setLocalLinks] = useState([]);
+  const [currentId, setCurrentId] = useState("");
+  const [data, setData] = useState({})
+
   const addOrEditLink = async (linkObject) => {
     console.log(linkObject);
     try {
-      await addDoc(collection(db, "try1"), linkObject);
-      setLocalLinks({
-        ...localLink,
-        linkObject,
+      const data = await addDoc(collection(db, "try1"), linkObject);
+      console.log(data)
+      setData(data);
+      toast("New Link agregado", {
+        type: "success",
       });
     } catch (err) {
       console.warn(err);
@@ -30,7 +34,11 @@ export default function Links() {
     try {
       const docRef = doc(db, "try1", id);
       await deleteDoc(docRef);
-
+      const newLinks = links.filter((link) => link.id !== id);
+      setLinks(newLinks);
+      toast("Enlace removido exitosamente", {
+        type: "error",
+      });
       console.log("documento cancellato con successo");
     } catch (err) {
       console.warn(err);
@@ -50,16 +58,23 @@ export default function Links() {
       }
     };
     getLinks();
-  }, [localLink]);
+  }, [data]);
   return (
     <div>
-      {console.log(localLink)}
-      <LinkForm addOrEditLink={addOrEditLink} />
+      <LinkForm
+        addOrEditLink={addOrEditLink}
+        message={currentId}
+        currentId={currentId}
+        links={links}
+      />
       {links.length > 0 ? (
         links.map((link) => (
           <ul key={link.name} className="card">
             <div className="close-btn" onClick={() => deleteLink(link.id)}>
               X
+            </div>
+            <div className="edit-btn" onClick={() => setCurrentId(link.id)}>
+              ✎
             </div>
             <li>{link.description}</li>
             <li>{link.name}</li>

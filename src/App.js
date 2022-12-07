@@ -1,14 +1,29 @@
 import "./App.css";
-import Links from "./components/Links"
-
+import Links from "./components/Links";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AuthContextProvider } from "./context/authContext";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import NavBar from "./components/NavBar"
 
 function App() {
-
-
   return (
-    <div className="App">
-      <Links/>
-    </div>
+    <>
+      <AuthContextProvider>
+        <NavBar/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+          
+        <Links />
+        <ToastContainer />
+      </AuthContextProvider>
+    </>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./LinkForm.css";
 
 const initialState = {
@@ -6,15 +6,14 @@ const initialState = {
   name: "",
   description: "",
 };
-export default function  LinkForm({addOrEditLink}){
+export default function LinkForm({ addOrEditLink, message, links, currentId }) {
   const [form, setForm] = useState(initialState);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("prima di mandare form", 1)
+    if (!form.url || !form.name || !form.description)
+      return alert("Devi riempire il formulario");
     addOrEditLink(form);
-    console.log("appena dopo aver mandato form", 2)
-    setForm(initialState)
-    console.log('dopo aver pulito il formulario con initialState', 3)
+    setForm(initialState);
   };
   const handleChange = (e) => {
     setForm({
@@ -22,6 +21,12 @@ export default function  LinkForm({addOrEditLink}){
       [e.target.name]: e.target.value,
     });
   };
+  useEffect(() => {
+    if (!currentId) return;
+    let singlLink = links.find((link) => link.id === currentId);
+    setForm(singlLink);
+  }, [currentId, links]);
+
   return (
     <div className="LinkForm">
       <form className="Form" onSubmit={handleSubmit}>
@@ -55,9 +60,8 @@ export default function  LinkForm({addOrEditLink}){
             placholder="write a description"
           ></textarea>
         </label>
-        <button> Save</button>
+        <button>{message ? "Update" : "Send"}</button>
       </form>
     </div>
   );
-};
-
+}
