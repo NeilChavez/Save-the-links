@@ -19,9 +19,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-          
+{/*           
         <Links />
-        <ToastContainer />
+        <ToastContainer /> */}
       </AuthContextProvider>
     </>
   );
