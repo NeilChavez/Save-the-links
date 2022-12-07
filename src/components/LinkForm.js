@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useCrudContext } from "../hooks/useCrudContext";
 import "./LinkForm.css";
 
 const initialState = {
@@ -6,8 +7,10 @@ const initialState = {
   name: "",
   description: "",
 };
-export default function LinkForm({ addOrEditLink, message, links, currentId }) {
+export default function LinkForm({ message }) {
   const [form, setForm] = useState(initialState);
+  const { addOrEditLink, links, currentId } = useCrudContext();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!form.url || !form.name || !form.description)
