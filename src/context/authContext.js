@@ -21,7 +21,7 @@ function AuthContextProvider({ children }) {
   };
   const logout = () => {
     // ritorna una promessa, gestisci l'errore nella funzione dove la chiami TODO
-    signOut(auth);
+   return signOut(auth);
   };
 
   return (

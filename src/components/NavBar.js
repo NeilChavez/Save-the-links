@@ -1,10 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import "./Navbar.css";
 
 export default function NavBar() {
-  // deve arrivare dal backend se e´ loggato o no l'utente TODO
-  const {isLogged} = useAuthContext();
+  const { isLogged, logout, setUser } = useAuthContext();
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      await logout();
+      setUser(false);
+      navigate("/");
+    } catch (err) {
+      console.warn(err);
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -21,7 +30,11 @@ export default function NavBar() {
                 <Link className="navbar-list-link link" to="/dashboard">
                   My page
                 </Link>
-                <Link className="navbar-list-link link" to="/login">
+                <Link
+                  className="navbar-list-link link"
+                  to="/"
+                  onClick={handleLogout}
+                >
                   logout
                 </Link>
               </>
