@@ -34,13 +34,12 @@ const reducer = (state, action) => {
   }
 };
 
-// CRUD   
+// CRUD
 const crudContext = createContext();
 function CrudContextProvider({ children }) {
   const [data, setData] = useState({});
   const [currentId, setCurrentId] = useState("");
   const [state, dispatch] = useReducer(reducer, initialState);
-
 
   const addOrEditLink = async (linkObject) => {
     try {
@@ -53,6 +52,7 @@ function CrudContextProvider({ children }) {
   };
 
   const deleteLink = async (id) => {
+    console.log("delete link, in action");
     try {
       const docRef = doc(db, "try1", id);
       await deleteDoc(docRef);
@@ -83,8 +83,11 @@ function CrudContextProvider({ children }) {
   }, [data]);
 
   return (
-    <crudContext.Provider value={{ state, addOrEditLink, deleteLink, currentId, setCurrentId }}>
+    <crudContext.Provider
+      value={{ state, addOrEditLink, deleteLink, currentId, setCurrentId }}
+    >
       {children}
+      {console.log("se renderiza crudProvider")}
     </crudContext.Provider>
   );
 }

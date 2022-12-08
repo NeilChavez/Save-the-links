@@ -15,9 +15,8 @@ import CardLink from "./CardLink";
 import { useCrudContext } from "../hooks/useCrudContext";
 
 export default function Links() {
-  const {deleteLink, state, setCurrentId } = useCrudContext();
-  const {links} = state;
-  console.log(links) 
+  const { deleteLink, state, setCurrentId } = useCrudContext();
+  const { links } = state;
 
 
   return (

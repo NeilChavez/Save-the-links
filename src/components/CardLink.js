@@ -4,7 +4,13 @@ export default function CardLink({ link, deleteLink, setCurrentId }) {
       <div className="close-btn" onClick={() => deleteLink(link.id)}>
         X
       </div>
-      <div className="edit-btn" onClick={() => setCurrentId(link.id)}>
+      <div
+        className="edit-btn"
+        onClick={() => {
+          console.log(link.id);
+          setCurrentId(link.id);
+        }}
+      >
         ✎
       </div>
       <li>{link.description}</li>

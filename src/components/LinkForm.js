@@ -9,14 +9,18 @@ const initialState = {
 };
 export default function LinkForm({ message }) {
   const [form, setForm] = useState(initialState);
-  const { addOrEditLink, links, currentId } = useCrudContext();
-
+  const { state, addOrEditLink, currentId } = useCrudContext();
+  const { links } = state;
+  console.log(links);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!form.url || !form.name || !form.description)
       return alert("Devi riempire il formulario");
     addOrEditLink(form);
-    setForm(initialState);
+    setForm({
+      ...form,
+      initialState,
+    });
   };
   const handleChange = (e) => {
     setForm({
@@ -26,12 +30,15 @@ export default function LinkForm({ message }) {
   };
   useEffect(() => {
     if (!currentId) return;
-    let singlLink = links.find((link) => link.id === currentId);
-    setForm(singlLink);
+    console.log("se renderiza useEffectformLink");
+    let singleLink = links.find((link) => link.id === currentId);
+    setForm(singleLink);
+    console.log(singleLink);
   }, [currentId, links]);
 
   return (
     <div className="LinkForm card">
+      {console.log("se renderiza formLink")}
       <form className="Form" onSubmit={handleSubmit}>
         <label>
           Write a URL
