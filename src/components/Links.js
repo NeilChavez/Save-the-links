@@ -24,7 +24,7 @@ export default function Links() {
       {links.length > 0 ? (
         links.map((link) => (
           <CardLink
-            key={link.name}
+            key={link.id}
             link={link}
             deleteLink={deleteLink}
             setCurrentId={setCurrentId}

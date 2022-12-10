@@ -4,8 +4,8 @@ import "./Navbar.css";
 
 export default function NavBar() {
 // TODO extrae isLogged de useAuth;
-let isLogged = true;
-  const { logout, setUser } = useAuthContext();
+// let isLogged = true;
+  const { logout, setUser, isLogged } = useAuthContext();
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {

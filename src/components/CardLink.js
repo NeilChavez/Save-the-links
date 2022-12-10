@@ -7,7 +7,6 @@ export default function CardLink({ link, deleteLink, setCurrentId }) {
       <div
         className="edit-btn"
         onClick={() => {
-          console.log(link.id);
           setCurrentId(link.id);
         }}
       >

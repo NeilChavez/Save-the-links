@@ -7,7 +7,10 @@ import {
   getDocs,
   doc,
   deleteDoc,
+  query,
+  where,
 } from "firebase/firestore";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const TYPES = {
   GET_SUCCESS: "GET_SUCCESS",
@@ -37,29 +40,30 @@ const reducer = (state, action) => {
 // CRUD
 const crudContext = createContext();
 function CrudContextProvider({ children }) {
-  const [data, setData] = useState({});
+  const [data, setData] = useState(null);
   const [currentId, setCurrentId] = useState("");
   const [state, dispatch] = useReducer(reducer, initialState);
+  // const { uid } = useAuthContext();
+  const uid = 228072;
 
   const addOrEditLink = async (linkObject) => {
     try {
-      const data = await addDoc(collection(db, "try1"), linkObject);
-      console.log(data);
+      // al posto di links deve andare l'id del utente
+      // la base dati, la collezion, la id
+      const documentRef = collection(db, "links");
+      const data = await addDoc(documentRef, { ...linkObject, id: uid });
       setData(data);
+      console.log("inserimento dato con successo");
     } catch (err) {
       console.warn(err);
     }
   };
 
   const deleteLink = async (id) => {
-    console.log("delete link, in action");
     try {
-      const docRef = doc(db, "try1", id);
+      const docRef = doc(db, "links", id);
       await deleteDoc(docRef);
-
       dispatch({ type: TYPES.DELETE_SUCCESS, payload: id });
-
-      console.log("documento cancellato con successo");
     } catch (err) {
       console.warn(err);
     }
@@ -68,7 +72,12 @@ function CrudContextProvider({ children }) {
   useEffect(() => {
     const getLinks = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "try1"));
+        // with this function I ask to retrieve all the links from the DB, 
+        // and specifically only those that have the "uid" property of the user, 
+        // therefore only those of the logged in user
+        const q = query(collection(db, "links"), where("id", "==", uid));
+        const querySnapshot = await getDocs(q);
+
         let newLinkState = [];
         querySnapshot.forEach((doc) => {
           newLinkState = [...newLinkState, { ...doc.data(), id: doc.id }];
@@ -87,7 +96,6 @@ function CrudContextProvider({ children }) {
       value={{ state, addOrEditLink, deleteLink, currentId, setCurrentId }}
     >
       {children}
-      {console.log("se renderiza crudProvider")}
     </crudContext.Provider>
   );
 }
