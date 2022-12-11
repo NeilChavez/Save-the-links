@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useUser } from "../hooks/useUser";
 import "./RegisterForm.css";
 
 const initialForm = {
@@ -9,9 +9,7 @@ const initialForm = {
 };
 export default function RegisterForm() {
   const [form, setForm] = useState(initialForm);
-  const navigate = useNavigate();
-
-  const { register, setUser } = useAuthContext();
+  const { register } = useUser();
 
   const handleChange = (e) => {
     setForm({
@@ -19,20 +17,10 @@ export default function RegisterForm() {
       [e.target.name]: e.target.value,
     });
   };
-  const handleSubmit = async (email, password) => {
+  const handleSubmit = (email, password) => {
     if (!form.password && !form.email)
       return alert("You have to fill in the email and password fields ;)");
-    try {
-      const data = await register(email, password);
-
-      const { user } = data;
-      const accessToken = user.accessToken;
-      window.sessionStorage.setItem("accessToken", accessToken)
-      setUser(accessToken);
-      navigate("/");
-    } catch (err) {
-      console.warn(err);
-    }
+    register(email, password);
   };
 
   return (

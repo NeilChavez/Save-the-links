@@ -1,22 +1,12 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useUser } from "../hooks/useUser";
 import "./Navbar.css";
 
 export default function NavBar() {
   // TODO extrae isLogged de useAuth;
   // let isLogged = true;
-  const { logout, setUser, isLogged } = useAuthContext();
-  const navigate = useNavigate();
-  const handleLogout = async () => {
-    try {
-      await logout();
-      window.sessionStorage.removeItem("accessToken");
-      setUser(null);
-      navigate("/");
-    } catch (err) {
-      console.warn(err);
-    }
-  };
+  const { logout, isLogged } = useUser();
 
   return (
     <nav className="navbar">
@@ -33,11 +23,7 @@ export default function NavBar() {
                 <Link className="navbar-list-link link" to="/dashboard">
                   My page
                 </Link>
-                <Link
-                  className="navbar-list-link link"
-                  to="/"
-                  onClick={handleLogout}
-                >
+                <Link className="navbar-list-link link" to="/" onClick={logout}>
                   logout
                 </Link>
               </>

@@ -1,30 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useUser } from "../hooks/useUser";
 import "./LoginForm.css";
 const initialForm = {
   email: "",
   password: "",
 };
 export default function LoginForm() {
-  const { login, setUser } = useAuthContext();
+  const { login, isLogged } = useUser();
   const [form, setForm] = useState(initialForm);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(isLogged) navigate("/dashboard");
+  }, [isLogged, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.email || !form.password)
       return alert("You have to fill in the email and password fields ;)");
-    try {
-      const data = await login(form.email, form.password);
-      const { user } = data;
-      const accessToken = user.accessToken;
-      setUser(accessToken);
-      window.sessionStorage.setItem("accessToken", accessToken);
-      navigate("/dashboard");
-    } catch (err) {
-      console.warn(err);
-    }
+    login(form.email, form.password);
   };
   const handleChange = (e) => {
     setForm({
