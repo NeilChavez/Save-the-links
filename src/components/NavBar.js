@@ -3,14 +3,15 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import "./Navbar.css";
 
 export default function NavBar() {
-// TODO extrae isLogged de useAuth;
-// let isLogged = true;
+  // TODO extrae isLogged de useAuth;
+  // let isLogged = true;
   const { logout, setUser, isLogged } = useAuthContext();
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
       await logout();
-      setUser(false);
+      window.sessionStorage.removeItem("accessToken");
+      setUser(null);
       navigate("/");
     } catch (err) {
       console.warn(err);

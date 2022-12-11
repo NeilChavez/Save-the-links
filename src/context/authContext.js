@@ -8,7 +8,9 @@ import { auth } from "../firebase.js";
 const authContext = createContext();
 
 function AuthContextProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() =>
+    window.sessionStorage.getItem("accessToken")
+  );
   const [loading, setLoading] = useState(false);
 
   const register = (email, password) => {
@@ -21,7 +23,7 @@ function AuthContextProvider({ children }) {
   };
   const logout = () => {
     // ritorna una promessa, gestisci l'errore nella funzione dove la chiami TODO
-   return signOut(auth);
+    return signOut(auth);
   };
 
   return (

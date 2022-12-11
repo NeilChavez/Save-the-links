@@ -10,14 +10,17 @@ export default function LoginForm() {
   const { login, setUser } = useAuthContext();
   const [form, setForm] = useState(initialForm);
   const navigate = useNavigate();
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.email || !form.password)
       return alert("You have to fill in the email and password fields ;)");
     try {
       const data = await login(form.email, form.password);
-      setUser(data);
+      const { user } = data;
+      const accessToken = user.accessToken;
+      setUser(accessToken);
+      window.sessionStorage.setItem("accessToken", accessToken);
       navigate("/dashboard");
     } catch (err) {
       console.warn(err);

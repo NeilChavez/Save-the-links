@@ -23,8 +23,12 @@ export default function RegisterForm() {
     if (!form.password && !form.email)
       return alert("You have to fill in the email and password fields ;)");
     try {
-      const user = await register(email, password);
-      setUser(user)
+      const data = await register(email, password);
+
+      const { user } = data;
+      const accessToken = user.accessToken;
+      window.sessionStorage.setItem("accessToken", accessToken)
+      setUser(accessToken);
       navigate("/");
     } catch (err) {
       console.warn(err);
