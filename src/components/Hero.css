@@ -13,7 +13,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-image: linear-gradient(45deg, rgb(226, 100, 100), rgb(121, 121, 237));
+  background-image: linear-gradient(45deg, rgb(208, 112, 112), rgb(170, 170, 252));
 }
 .home-section p {
     font-size: 1.5rem;
