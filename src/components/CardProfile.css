@@ -1,7 +1,7 @@
 .card-profile {
   width: 100%;
   padding: 1.5rem;
-  background-color: #2a3d4a;
+  background-color: var(--white-blur);
   border-radius: 10px;
 }
 .card-profile figure {

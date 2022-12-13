@@ -1,5 +1,10 @@
+:root {
+  --primary-color: linear-gradient(45deg, #34175dc3, #6f205fce);
+  --secundary-color: #502873;
+  --white-blur: rgba(250, 250, 250, 0.1);
+}
 body {
-  background-color: #335157;
+  background: var(--primary-color);
   color: #fff;
 }
 html {
@@ -31,17 +36,16 @@ a {
   border-radius: 10px;
   border: medium solid #fff;
   color: #fff;
-  background-color: #2a3d4a;
+  background-color: var(--secundary-color);
 }
 
 .dashboard {
   padding: 1.5rem;
 }
 
-.card{
-  width: 100%;   
+.card {
+  width: 100%;
   padding: 1.5rem;
-  background-color: #2a3d4a;
+  background-color: var(--white-blur);
   border-radius: 10px;
 }
-

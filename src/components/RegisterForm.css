@@ -32,6 +32,6 @@
   border-radius: 10px;
   border: medium solid #fff;
   color: #fff;
-  background-color: #2a3d4a;
+  background-color: var(--white-blur);
   font-size: 1.2rem;
 }
