@@ -20,7 +20,7 @@ export default function Links() {
 
 
   return (
-    <section className="card">
+    <section className="card list-links">
       {links.length > 0 ? (
         links.map((link) => (
           <CardLink

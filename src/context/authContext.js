@@ -2,13 +2,15 @@ import { createContext, useState } from "react";
 const authContext = createContext();
 
 function AuthContextProvider({ children }) {
-  const [user, setUser] = useState(() =>
+  const [token, setToken] = useState(() =>
     window.sessionStorage.getItem("accessToken")
   );
-  const [loading, setLoading] = useState(false);
+
+  const [userData, setUserData] = useState(() =>
+    JSON.parse(window.sessionStorage.getItem("userData")));
 
   return (
-    <authContext.Provider value={{ user, setUser }}>
+    <authContext.Provider value={{ token, setToken, userData, setUserData }}>
       {children}
     </authContext.Provider>
   );

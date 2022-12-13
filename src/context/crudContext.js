@@ -43,8 +43,11 @@ function CrudContextProvider({ children }) {
   const [data, setData] = useState(null);
   const [currentId, setCurrentId] = useState("");
   const [state, dispatch] = useReducer(reducer, initialState);
-  // const { uid } = useAuthContext();
-  const uid = 228072;
+  const { userData } = useAuthContext();
+  // const userData = 228072;
+  const uid = userData.uid
+
+    ;
 
   const addOrEditLink = async (linkObject) => {
     try {
@@ -89,7 +92,7 @@ function CrudContextProvider({ children }) {
       }
     };
     getLinks();
-  }, [data]);
+  }, [data, uid]);
 
   return (
     <crudContext.Provider

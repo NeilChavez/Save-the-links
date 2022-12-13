@@ -1,3 +1,6 @@
+.LinkForm {
+  grid-area: 'secondColumn' !important;
+}
 
 .Form {
   background-color: rgba(255, 255, 255, 0.2);
@@ -12,4 +15,32 @@
   justify-content: center;
   padding: 3rem 0;
   gap: 1rem;
+}
+.Form input,
+.Form textarea {
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-family);
+  background-color: #4e3267b9;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  width: 70%;
+  text-align: center;
+  border: none;
+}
+
+.Form input::placeholder,
+.Form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.81);
+}
+.Form input:focus,
+.Form textarea:focus{
+  outline: none;
+}
+.Form textarea{
+  resize: none;
+}
+.btn-insertLink{
+font-size: 1rem;
+padding: 0.5rem 1rem;
 }

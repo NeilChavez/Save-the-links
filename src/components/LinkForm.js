@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useCrudContext } from "../hooks/useCrudContext";
 import "./LinkForm.css";
-
 const initialState = {
   url: "",
   name: "",
@@ -37,37 +36,41 @@ export default function LinkForm({ message }) {
   return (
     <div className="LinkForm card">
       <form className="Form" onSubmit={handleSubmit}>
-        <label>
+        <label htmlFor="url">
           Write a URL
-          <input
-            type="text"
-            name="url"
-            value={form.url}
-            onChange={handleChange}
-            placeholder="hhtps://www.someUrl.com"
-          />
         </label>
-        <label>
+        <input
+          type="text"
+          name="url"
+          id="url"
+          value={form.url}
+          onChange={handleChange}
+          placeholder="hhtps://www.someUrl.com"
+          autoComplete="off"
+        />
+        <label htmlFor="link-name">
           Insert Link
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placerholder="Insert link"
-          />
         </label>
-        <label>
+        <input
+          type="text"
+          name="name"
+          id="link-name"
+          value={form.name}
+          onChange={handleChange}
+          placeholder="Insert the link name..." autoComplete="off"
+        />
+        <label htmlFor="link-description">
           Write a description:
-          <textarea
-            name="description"
-            value={form.description}
-            onChange={handleChange}
-            rows="2"
-            placholder="write a description"
-          ></textarea>
         </label>
-        <button>{message ? "Update" : "Send"}</button>
+        <textarea
+          name="description"
+          value={form.description}
+          id="link-description"
+          onChange={handleChange}
+          rows="2"
+          placeholder="Write a description..." autoComplete="off"
+        ></textarea>
+        <button className="btn btn-insertLink">{message ? "Update" : "Send"}</button>
       </form>
     </div>
   );

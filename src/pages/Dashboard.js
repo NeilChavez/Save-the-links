@@ -9,14 +9,8 @@ export default function Dashboard() {
     <section className="dashboard">
       <CrudContextProvider>
         <CardProfile />
-        {/*TODO  delete <br>s after use of Grid-css*/}
-        <br />
-        <SavedLinks />
-        {/*TODO delete <br>s after use of Grid-css*/}
-        <br />
         <LinkForm />
-        {/*TODO delete <br>s after use of Grid-css*/}
-        <br />
+        <SavedLinks />
         <Links />
       </CrudContextProvider>
     </section>

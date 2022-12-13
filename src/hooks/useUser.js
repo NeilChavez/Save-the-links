@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
 
 export function useUser() {
-  const { user, setUser } = useAuthContext();
+  const { token, setToken, setUserData } = useAuthContext();
   const navigate = useNavigate();
 
   const register = useCallback(
@@ -23,14 +23,18 @@ export function useUser() {
         );
         const { user } = data;
         const accessToken = user.accessToken;
+        console.log(user)
         window.sessionStorage.setItem("accessToken", accessToken);
-        setUser(accessToken);
+        window.sessionStorage.setItem("userData", JSON.stringify(user));
+        setToken(accessToken);
+        setUserData(data);
+
         navigate("/");
       } catch (err) {
         console.warn(err);
       }
     },
-    [navigate, setUser]
+    [navigate, setToken, setUserData]
   );
 
   const login = useCallback(
@@ -39,32 +43,38 @@ export function useUser() {
       try {
         const data = await signInWithEmailAndPassword(auth, email, password);
         const { user } = data;
+        console.log(data);
         const accessToken = user.accessToken;
-        setUser(accessToken);
         window.sessionStorage.setItem("accessToken", accessToken);
+        window.sessionStorage.setItem("userData", JSON.stringify(user));
+        setToken(accessToken);
+        setUserData(user);
+
       } catch (err) {
         console.warn(err);
       }
     },
-    [setUser]
+    [setToken, setUserData]
   );
   const logout = useCallback(async () => {
     // gestisci l'errore TODO;
     try {
       await signOut(auth);
       window.sessionStorage.removeItem("accessToken");
-      setUser(null);
-      navigate("/");
+      window.sessionStorage.removeItem("userData");
+      setToken(null);
+      setUserData(null);
+      navigate("/")
     } catch (err) {
       console.warn(err);
     }
-  }, [setUser, navigate]);
+  }, [setToken, navigate, setUserData]);
 
   return {
     register,
     login,
     logout,
-    isLogged: Boolean(user),
-    setUser,
+    isLogged: Boolean(token),
+    setToken,
   };
 }

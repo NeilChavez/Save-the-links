@@ -3,11 +3,21 @@
   padding: 1.5rem;
   background-color: var(--white-blur);
   border-radius: 10px;
+  grid-area: "firstColumn";
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .card-profile figure {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  flex-direction: column;
+  gap:2rem;
+}
+.profile-img-wrapper{
+  width: 50%;
+  height: 50%;
 }
 .card-profile img {
   border-radius: 50%;
