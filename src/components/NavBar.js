@@ -33,7 +33,7 @@ export default function NavBar() {
           </button>
           <div className={`login-register-wrapper ${showMenu ? "is-active" : ""}`}>
 
-            <Link
+            {/* <Link
               className="navbar-list-link link"
               to="/login">
               Login
@@ -42,8 +42,8 @@ export default function NavBar() {
               className="navbar-list-link link"
               to="/register">
               Register
-            </Link>
-            {/* {isLogged ? (
+            </Link> */}
+            {isLogged ? (
               <>
                 <Link className="navbar-list-link link" to="/dashboard">
                   My page
@@ -61,10 +61,7 @@ export default function NavBar() {
                   Register
                 </Link>
               </>
-            )} */}
-
-
-
+            )}
           </div>
         </li>
       </ul>

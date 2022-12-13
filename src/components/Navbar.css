@@ -35,8 +35,16 @@
   transform: translateX(-100%);
   transition: transform 0.2s ease;
 }
-.login-register-wrapper.is-active{
+.login-register-wrapper.is-active {
   transform: translate(0);
+}
+.hamburger-inner,
+.hamburger-inner::after,
+.hamburger-inner::before,
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+  background-color: #fff;
 }
 
 .login-register-wrapper .navbar-list-link {
@@ -55,7 +63,7 @@
     padding: 0.3rem 0;
     gap: 2.5rem;
   }
-  .btn-hamburger{
+  .btn-hamburger {
     display: none;
   }
 
