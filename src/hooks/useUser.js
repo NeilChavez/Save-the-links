@@ -34,10 +34,10 @@ export function useUser() {
   );
 
   const login = useCallback(
-    (email, password) => {
+    async (email, password) => {
       // gestisci l'errore TODO;
       try {
-        const data = signInWithEmailAndPassword(auth, email, password);
+        const data = await signInWithEmailAndPassword(auth, email, password);
         const { user } = data;
         const accessToken = user.accessToken;
         setUser(accessToken);
