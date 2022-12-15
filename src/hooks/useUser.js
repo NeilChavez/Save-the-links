@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 import {
   createUserWithEmailAndPassword,
@@ -9,7 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
 
 export function useUser() {
-  const { token, setToken, setUserData } = useAuthContext();
+  const { token, setToken, setUserData, error, setError } = useAuthContext();
+  const [msgError, setMsgError] = useState("");
   const navigate = useNavigate();
 
   const register = useCallback(
@@ -27,33 +29,35 @@ export function useUser() {
         window.sessionStorage.setItem("userData", JSON.stringify(data));
         setToken(accessToken);
         setUserData(data);
-
         navigate("/");
       } catch (err) {
-        console.warn(err);
+        setError(true);
+        setMsgError(err.code)
+
       }
     },
-    [navigate, setToken, setUserData]
+    [navigate, setToken, setUserData, setError]
   );
 
   const login = useCallback(
     async (email, password) => {
-      // gestisci l'errore TODO;
       try {
         const data = await signInWithEmailAndPassword(auth, email, password);
         const { user } = data;
         const accessToken = user.accessToken;
         window.sessionStorage.setItem("accessToken", accessToken);
-        
+
         window.sessionStorage.setItem("userData", JSON.stringify(data));
         setToken(accessToken);
         setUserData(data);
 
       } catch (err) {
-        console.warn(err);
+        setError(true);
+        setMsgError(err.code)
+
       }
     },
-    [setToken, setUserData]
+    [setToken, setUserData, setError]
   );
   const logout = useCallback(async () => {
     // gestisci l'errore TODO;
@@ -65,9 +69,10 @@ export function useUser() {
       setUserData(null);
       navigate("/")
     } catch (err) {
-      console.warn(err);
+      setError(true);
+      setMsgError(err.code)
     }
-  }, [setToken, navigate, setUserData]);
+  }, [setToken, navigate, setUserData, setError]);
 
   return {
     register,
@@ -75,5 +80,7 @@ export function useUser() {
     logout,
     isLogged: Boolean(token),
     setToken,
+    error,
+    msgError
   };
 }

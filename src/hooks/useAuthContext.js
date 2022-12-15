@@ -2,7 +2,7 @@ import { useContext } from "react";
 import authContext from "../context/authContext";
 
 export function useAuthContext() {
-  const { userData, setUserData, token, setToken } = useContext(authContext);
+  const { userData, setUserData, token, setToken, error, setError } = useContext(authContext);
   
   return {
     userData,
@@ -10,5 +10,7 @@ export function useAuthContext() {
     token,
     setToken,
     isLogged: Boolean(token),
+    error, 
+    setError
   };
 }

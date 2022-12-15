@@ -1,4 +1,5 @@
 .card-link {
+  max-width: 300px;
   background-color: rgba(34, 42, 62, 0.5);
   border-radius: 10px;
   display: block;

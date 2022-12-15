@@ -8,19 +8,28 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
-
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import "./Links.css";
-import { toast } from "react-toastify";
 import CardLink from "./CardLink";
 import { useCrudContext } from "../hooks/useCrudContext";
 
 export default function Links() {
   const { deleteLink, state, setCurrentId } = useCrudContext();
   const { links } = state;
-
+ 
 
   return (
     <section className="card list-links">
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        rtl={false}
+      />
+      {/* Same as */}
+      <ToastContainer />
       {links.length > 0 ? (
         links.map((link) => (
           <CardLink
@@ -31,7 +40,7 @@ export default function Links() {
           />
         ))
       ) : (
-        <p>non ci sono elementi da mostrare</p>
+        <p className="no-elements-msg">You have not added any Links to the list yet... ⬆️ </p>
       )}
     </section>
   );

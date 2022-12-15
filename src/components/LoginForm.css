@@ -17,6 +17,7 @@
   background-color: rgba(255, 255, 255, 0.2);
   padding: 1rem;
   border-radius: 10px;
+  gap: 0.5rem;
 }
 .form-login input[type='email'],
 .form-login input[type='password'] {
@@ -34,4 +35,10 @@
   color: #fff;
   background-color: var(--white-blur);
   font-size: 1.2rem;
+}
+
+.no-elements-msg {
+  font-style: italic;
+  font-size: 1.3rem;
+  text-align: center;
 }

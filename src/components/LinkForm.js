@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useCrudContext } from "../hooks/useCrudContext";
+import {toast} from "react-toastify"
 import "./LinkForm.css";
 const initialState = {
   url: "",
@@ -14,7 +15,9 @@ export default function LinkForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!form.url || !form.name || !form.description)
-      return alert("You need to fill the form");
+      return  toast("You need to fill the form", {
+        type: "error"
+      });
     addOrEditLink(form);
     setForm(initialState);
     setCurrentId("")
@@ -29,11 +32,18 @@ export default function LinkForm() {
       [e.target.name]: e.target.value,
     });
   };
+  console.log(form)
   useEffect(() => {
     if (!currentId) return;
     let singleLink = links.find((link) => link.id === currentId);
     setForm(singleLink);
   }, [currentId, links]);
+
+  useEffect(() => {
+    if (!currentId) {
+      setForm(initialState);
+    }
+  }, [currentId])
 
   return (
     <div className="LinkForm card">

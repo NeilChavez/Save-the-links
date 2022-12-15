@@ -12,6 +12,7 @@ import {
   where,
 } from "firebase/firestore";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { toast } from "react-toastify";
 
 const TYPES = {
   GET_SUCCESS: "GET_SUCCESS",
@@ -56,6 +57,9 @@ function CrudContextProvider({ children }) {
         const data = await updateDoc(documentRef, { ...linkObject, id: uid });
         setData(data);
         console.log("MODIFICA avenuta con successo")
+        toast('Successfully updated in your list!', {
+          type: "success"
+        });
       } catch (err) {
         console.warn("errore nella MoDiFica", err)
       }
@@ -68,18 +72,27 @@ function CrudContextProvider({ children }) {
         const data = await addDoc(documentRef, { ...linkObject, id: uid });
         setData(data);
         console.log("inserimento dato con successo");
+        toast('Successfully added to your list!', {
+          type: "success"
+        });
       } catch (err) {
         console.warn(err);
       }
 
     }
+
   };
 
   const deleteLink = async (id) => {
     try {
+      setCurrentId("");
       const docRef = doc(db, "links", id);
-      await deleteDoc(docRef);
+      const data = await deleteDoc(docRef);
+      console.log({ "response deleteDoc": data });
       dispatch({ type: TYPES.DELETE_SUCCESS, payload: id });
+      toast('Successfully deleted from your list!', {
+        type: "error"
+      });
     } catch (err) {
       console.warn(err);
     }

@@ -1,5 +1,8 @@
 .LinkForm {
   grid-area: 'secondColumn' !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Form {

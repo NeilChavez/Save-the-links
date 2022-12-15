@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useUser } from "../hooks/useUser";
 import "./LoginForm.css";
+
+
 const initialForm = {
   email: "",
   password: "",
 };
 export default function LoginForm() {
-  const { login, isLogged } = useUser();
+  const { login, isLogged, msgError, error } = useUser();
   const [form, setForm] = useState(initialForm);
   const navigate = useNavigate();
 
@@ -18,7 +21,9 @@ export default function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.email || !form.password)
-      return alert("You have to fill in the email and password fields ;)");
+      return toast("You need to fill the form", {
+        type: "error"
+      });
     login(form.email, form.password);
   };
   const handleChange = (e) => {
@@ -27,10 +32,14 @@ export default function LoginForm() {
       [e.target.name]: e.target.value,
     });
   };
+
   return (
     <section className="section-login">
       <h3>Login with email and password</h3>
+      {error && <p>{msgError}</p>}
+
       <form className="form-login" onSubmit={handleSubmit}>
+
         <input
           onChange={handleChange}
           name="email"

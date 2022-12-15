@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useUser } from "../hooks/useUser";
 import "./RegisterForm.css";
 
@@ -9,8 +8,9 @@ const initialForm = {
 };
 export default function RegisterForm() {
   const [form, setForm] = useState(initialForm);
-  const { register } = useUser();
-
+  const {register,  error, msgError } = useUser();
+  // const { register } = useUser();
+  console.log({ msgError })
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -26,6 +26,7 @@ export default function RegisterForm() {
   return (
     <section className="section-register">
       <h3>Register with email and password</h3>
+      {error && <p className="error">{msgError}</p>}
       <form
         className="form-register"
         onSubmit={(e) => {
