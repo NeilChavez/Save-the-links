@@ -4,7 +4,6 @@ import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute({ children }) {
   const { token, loading } = useAuthContext();
-console.log('pretected route', {token})
   if (loading) return <h2>Loading</h2>;
   if (!token) return <Navigate to="/login" />;
   return <>{children}</>;

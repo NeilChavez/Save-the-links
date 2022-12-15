@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUser } from "../hooks/useUser";
+import HamburgerButton from "../components/HamburgerButton"
 import "./Navbar.css";
 
 export default function NavBar() {
   // TODO extrae isLogged de useAuth;
   // let isLogged = true;
   const { logout, isLogged } = useUser();
-  const [showMenu, SetShowMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState(false)
   const handleClick = () => {
-    SetShowMenu(prevState => !prevState);
+    setShowMenu(prevState => !prevState);
   }
   return (
-    <nav className="navbar" onClick={() => showMenu && SetShowMenu(false)}>
+    <nav className="navbar" onClick={() => showMenu && setShowMenu(false)}>
       <ul className="navbar-list">
         <li className="navbar-list-item">
           <Link
@@ -22,34 +23,17 @@ export default function NavBar() {
           </Link>
         </li>
         <li className="navbar-list-item">
-
-          <button class={`hamburger hamburger--collapse 
-            ${showMenu ? "is-active" : ""} btn-hamburger`}
-            type="button"
-            onClick={handleClick}>
-            <span class="hamburger-box">
-              <span class="hamburger-inner hamburger-color"></span>
-            </span>
-          </button>
+          <HamburgerButton 
+          showMenu={showMenu} 
+          handleClick={handleClick} />
           <div className={`login-register-wrapper ${showMenu ? "is-active" : ""}`}>
-
-            {/* <Link
-              className="navbar-list-link link"
-              to="/login">
-              Login
-            </Link>
-            <Link
-              className="navbar-list-link link"
-              to="/register">
-              Register
-            </Link> */}
             {isLogged ? (
               <>
                 <Link className="navbar-list-link link" to="/dashboard">
-                  My page
+                  MyPage
                 </Link>
                 <Link className="navbar-list-link link" to="/" onClick={logout}>
-                  logout
+                  Logout
                 </Link>
               </>
             ) : (

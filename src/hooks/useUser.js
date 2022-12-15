@@ -23,9 +23,8 @@ export function useUser() {
         );
         const { user } = data;
         const accessToken = user.accessToken;
-        console.log(user)
         window.sessionStorage.setItem("accessToken", accessToken);
-        window.sessionStorage.setItem("userData", JSON.stringify(user));
+        window.sessionStorage.setItem("userData", JSON.stringify(data));
         setToken(accessToken);
         setUserData(data);
 
@@ -43,12 +42,12 @@ export function useUser() {
       try {
         const data = await signInWithEmailAndPassword(auth, email, password);
         const { user } = data;
-        console.log(data);
         const accessToken = user.accessToken;
         window.sessionStorage.setItem("accessToken", accessToken);
-        window.sessionStorage.setItem("userData", JSON.stringify(user));
+        
+        window.sessionStorage.setItem("userData", JSON.stringify(data));
         setToken(accessToken);
-        setUserData(user);
+        setUserData(data);
 
       } catch (err) {
         console.warn(err);

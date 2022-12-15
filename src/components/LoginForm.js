@@ -29,7 +29,6 @@ export default function LoginForm() {
   };
   return (
     <section className="section-login">
-      {console.log(isLogged)}
       <h3>Login with email and password</h3>
       <form className="form-login" onSubmit={handleSubmit}>
         <input

@@ -3,7 +3,8 @@
   --secundary-color: #502873;
 
   --white-blur: rgba(250, 250, 250, 0.1);
-  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 body {
   background: var(--primary-color);
@@ -30,11 +31,12 @@ a {
   color: #fff;
 }
 
-img{
+img {
   width: 100%;
   height: auto;
 }
-.link, .btn {
+.link,
+.btn {
   height: 100%;
   display: flex;
   align-items: center;
@@ -50,6 +52,11 @@ img{
   padding: 1.5rem;
   display: grid;
   gap: 1rem;
+
+    grid-template-columns: 100%;
+}
+.dashboard > * {
+  max-width: 100%;
 }
 
 .card {
@@ -61,12 +68,8 @@ img{
 
 @media (min-width: 768px) {
   .dashboard {
-    grid-template-columns: 25rem 1fr;
+    grid-template-columns: 20rem 1fr;
     grid-template-rows: auto;
-    grid-template-areas:
-      'firstColumn secondColumn';
+    grid-template-areas: 'firstColumn secondColumn';
   }
-}
-
-@media (min-width: 992px) {
 }
