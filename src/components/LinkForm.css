@@ -16,6 +16,9 @@
   padding: 3rem 0;
   gap: 1rem;
 }
+.Form label {
+  font-weight: bold;
+}
 .Form input,
 .Form textarea {
   background: transparent;
@@ -27,6 +30,7 @@
   width: 70%;
   text-align: center;
   border: none;
+  font-size: 1rem;
 }
 
 .Form input::placeholder,
@@ -34,13 +38,22 @@
   color: rgba(255, 255, 255, 0.81);
 }
 .Form input:focus,
-.Form textarea:focus{
+.Form textarea:focus {
   outline: none;
 }
-.Form textarea{
+.Form textarea {
   resize: none;
 }
-.btn-insertLink{
-font-size: 1rem;
-padding: 0.5rem 1rem;
+.btn-insertLink {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.btn-insertLink:hover {
+  transform: scale(1.06);
+}
+.btn-wrapper {
+  display: flex;
+  gap: 1rem;
 }

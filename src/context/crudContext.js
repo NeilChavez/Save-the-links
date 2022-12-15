@@ -7,6 +7,7 @@ import {
   getDocs,
   doc,
   deleteDoc,
+  updateDoc,
   query,
   where,
 } from "firebase/firestore";
@@ -48,15 +49,29 @@ function CrudContextProvider({ children }) {
   const uid = userData.user.uid;
 
   const addOrEditLink = async (linkObject) => {
-    try {
-      // al posto di links deve andare l'id del utente
-      // la base dati, la collezion, la id
-      const documentRef = collection(db, "links");
-      const data = await addDoc(documentRef, { ...linkObject, id: uid });
-      setData(data);
-      console.log("inserimento dato con successo");
-    } catch (err) {
-      console.warn(err);
+    if (currentId) {
+      //update
+      try {
+        const documentRef = doc(db, "links", currentId);
+        const data = await updateDoc(documentRef, { ...linkObject, id: uid });
+        setData(data);
+        console.log("MODIFICA avenuta con successo")
+      } catch (err) {
+        console.warn("errore nella MoDiFica", err)
+      }
+    } else {
+      //create
+      try {
+        // al posto di links deve andare l'id del utente
+        // la base dati, la collezion, la id
+        const documentRef = collection(db, "links");
+        const data = await addDoc(documentRef, { ...linkObject, id: uid });
+        setData(data);
+        console.log("inserimento dato con successo");
+      } catch (err) {
+        console.warn(err);
+      }
+
     }
   };
 

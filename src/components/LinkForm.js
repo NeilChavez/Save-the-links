@@ -6,21 +6,23 @@ const initialState = {
   name: "",
   description: "",
 };
-export default function LinkForm({ message }) {
+export default function LinkForm() {
   const [form, setForm] = useState(initialState);
-  const { state, addOrEditLink, currentId } = useCrudContext();
+  const { state, addOrEditLink, currentId, setCurrentId } = useCrudContext();
   const { links } = state;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!form.url || !form.name || !form.description)
-      return alert("Devi riempire il formulario");
+      return alert("You need to fill the form");
     addOrEditLink(form);
-    setForm({
-      ...initialState,
-    });
-    console.log("fin de submitform, dovrebbe svuotare il form");
+    setForm(initialState);
+    setCurrentId("")
   };
+  const handleReset = () => {
+    setForm(initialState);
+    setCurrentId("")
+  }
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -70,7 +72,10 @@ export default function LinkForm({ message }) {
           rows="2"
           placeholder="Write a description..." autoComplete="off"
         ></textarea>
-        <button className="btn btn-insertLink">{message ? "Update" : "Send"}</button>
+        <div className="btn-wrapper">
+          {currentId && <button className="btn btn-insertLink" onClick={handleReset}>Reset</button>}
+          <button className="btn btn-insertLink">{currentId ? "Update" : "Send"}</button>
+        </div>
       </form>
     </div>
   );
