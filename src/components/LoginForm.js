@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useUser } from "../hooks/useUser";
 import "./LoginForm.css";
+import SignInGoogleButton from "./SIgnInGoogleButton";
 
 
 const initialForm = {
@@ -10,7 +11,7 @@ const initialForm = {
   password: "",
 };
 export default function LoginForm() {
-  const { login, isLogged, msgError, error } = useUser();
+  const { login, isLogged, signInWithGoogle, msgError, error } = useUser();
   const [form, setForm] = useState(initialForm);
   const navigate = useNavigate();
 
@@ -56,6 +57,7 @@ export default function LoginForm() {
         />
         <input type="submit" className="link" value="login" />
       </form>
+      <SignInGoogleButton signInWithGoogle={signInWithGoogle} />
     </section>
   );
 }

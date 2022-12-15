@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useCrudContext } from "../hooks/useCrudContext";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify"
 import "./LinkForm.css";
 const initialState = {
   url: "",
@@ -15,7 +15,7 @@ export default function LinkForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!form.url || !form.name || !form.description)
-      return  toast("You need to fill the form", {
+      return toast("You need to fill the form", {
         type: "error"
       });
     addOrEditLink(form);
@@ -49,7 +49,7 @@ export default function LinkForm() {
     <div className="LinkForm card">
       <form className="Form" onSubmit={handleSubmit}>
         <label htmlFor="url">
-          Write a URL
+          Write a URL Link
         </label>
         <input
           type="text"
@@ -61,7 +61,7 @@ export default function LinkForm() {
           autoComplete="off"
         />
         <label htmlFor="link-name">
-          Insert Link
+          Insert website name
         </label>
         <input
           type="text"
@@ -69,7 +69,7 @@ export default function LinkForm() {
           id="link-name"
           value={form.name}
           onChange={handleChange}
-          placeholder="Insert the link name..." autoComplete="off"
+          placeholder="Insert website name..." autoComplete="off"
         />
         <label htmlFor="link-description">
           Write a description:

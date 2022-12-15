@@ -1,0 +1,45 @@
+.google-btn {
+  width: 12rem;
+  height: 2.5rem;
+  background-color: var(--google-blue);
+  border-radius: 10px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  /* border: thick solid rgb(4, 255, 0); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.google-btn .google-icon-wrapper {
+  height: 100%;
+  width: 2.5rem;
+  border-radius: 2px;
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.google-btn .google-icon {
+  width: 18px;
+  height: 18px;
+}
+.google-btn .btn-text {
+  color: var(--white);
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: 'Roboto';
+  margin-right: 1.5rem;
+}
+.google-btn:hover {
+  box-shadow: 0 0 6px var(--google-blue);
+}
+.google-btn:active {
+  background: var(--button-active-blue);
+}
+
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:500); */

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useUser } from "../hooks/useUser";
 import "./RegisterForm.css";
+import SignInGoogleButton from "./SIgnInGoogleButton";
 
 const initialForm = {
   email: "",
@@ -8,9 +9,8 @@ const initialForm = {
 };
 export default function RegisterForm() {
   const [form, setForm] = useState(initialForm);
-  const {register,  error, msgError } = useUser();
-  // const { register } = useUser();
-  console.log({ msgError })
+  const { register, signInWithGoogle, error, msgError } = useUser();
+
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -22,6 +22,7 @@ export default function RegisterForm() {
       return alert("You have to fill in the email and password fields ;)");
     register(email, password);
   };
+
 
   return (
     <section className="section-register">
@@ -50,6 +51,7 @@ export default function RegisterForm() {
         />
         <input type="submit" className="link" value="register" />
       </form>
+      <SignInGoogleButton signInWithGoogle={signInWithGoogle} />
     </section>
   );
 }
