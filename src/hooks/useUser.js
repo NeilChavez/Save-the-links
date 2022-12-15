@@ -29,11 +29,17 @@ export function useUser() {
         window.sessionStorage.setItem("userData", JSON.stringify(data));
         setToken(accessToken);
         setUserData(data);
+        setError(false);
         navigate("/");
       } catch (err) {
         setError(true);
-        setMsgError(err.code)
-
+        let textMessage = "";
+        if (err.code === "auth/email-already-exists") textMessage = "This email already exists";
+        if (err.code === "auth/email-already-in-use") textMessage = "This email already is already in use";
+        if (err.code === "auth/missing-email") textMessage = "Insert a email";
+        if (err.code === "auth/invalid-email") textMessage = "You need to insert a valid email";
+        if (err.code === "auth/invalid-password") textMessage = "The password is not valid";
+        setMsgError(textMessage)
       }
     },
     [navigate, setToken, setUserData, setError]
@@ -50,10 +56,15 @@ export function useUser() {
         window.sessionStorage.setItem("userData", JSON.stringify(data));
         setToken(accessToken);
         setUserData(data);
-
+        setError(false);
       } catch (err) {
         setError(true);
-        setMsgError(err.code)
+        let textMessage = "";
+        if (err.code === "auth/email-already-exists") textMessage = "This email already exists";
+        if (err.code === "auth/missing-email") textMessage = "Insert a email";
+        if (err.code === "auth/invalid-email") textMessage = "You need to insert a valid email";
+        if (err.code === "auth/invalid-password") textMessage = "The password is not valid";
+        setMsgError(textMessage)
 
       }
     },
@@ -67,10 +78,16 @@ export function useUser() {
       window.sessionStorage.removeItem("userData");
       setToken(null);
       setUserData(null);
+      setError(false);
       navigate("/")
     } catch (err) {
       setError(true);
-      setMsgError(err.code)
+      let textMessage = "";
+      if (err.code === "auth/email-already-exists") textMessage = "This email already exists";
+      if (err.code === "auth/missing-email") textMessage = "Insert a email";
+      if (err.code === "auth/invalid-email") textMessage = "You need to insert a valid email";
+      if (err.code === "auth/invalid-password") textMessage = "The password is not valid";
+      setMsgError(textMessage)
     }
   }, [setToken, navigate, setUserData, setError]);
 
