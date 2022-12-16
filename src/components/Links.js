@@ -9,18 +9,10 @@ import { useCrudContext } from "../hooks/useCrudContext";
 export default function Links() {
   const { deleteLink, state, setCurrentId } = useCrudContext();
   const { links } = state;
- 
+
 
   return (
     <section className="card list-links">
-      <ToastContainer
-        position="top-right"
-        hideProgressBar={false}
-        newestOnTop={false}
-        rtl={false}
-      />
-      {/* Same as */}
-      <ToastContainer />
       {links.length > 0 ? (
         links.map((link) => (
           <CardLink
@@ -33,6 +25,13 @@ export default function Links() {
       ) : (
         <p className="no-elements-msg">You have not added any Links to the list yet... ⬆️ </p>
       )}
+      <ToastContainer
+        position="top-right"
+        hideProgressBar={false}
+        newestOnTop={false}
+        rtl={false}
+      />
+      <ToastContainer />
     </section>
   );
 }
