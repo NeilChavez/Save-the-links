@@ -60,7 +60,7 @@ export default function LoginForm() {
           value={form.password}
           placeholder="insert you password..."
         />
-        <input type="submit" className="link" value="login" />
+        <input type="submit" className="link" value="Login" />
       </form>
       <SignInGoogleButton signInWithGoogle={signInWithGoogle} />
     </section>

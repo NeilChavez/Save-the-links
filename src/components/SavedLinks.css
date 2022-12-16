@@ -1,0 +1,9 @@
+.saved-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem
+}
+.saved-links span{
+    font-size: 1.2rem;
+}

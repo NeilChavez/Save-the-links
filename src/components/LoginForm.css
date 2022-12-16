@@ -29,12 +29,13 @@
   margin-left: auto;
   margin-right: auto;
   height: 100%;
-  padding: 0 1rem;
   border-radius: 10px;
   border: medium solid #fff;
   color: #fff;
-  background-color: var(--white-blur);
-  font-size: 1.2rem;
+  background-color: var(--secundary-color);
+  font-size: 1rem;
+  padding: 0.2rem 1rem;
+  cursor: pointer
 }
 
 .no-elements-msg {

@@ -25,7 +25,6 @@ export default function RegisterForm() {
 
   useEffect(()=>{
     setError(false);
-    console.log("Register form si renderizza")
   }, [setError])
 
 
@@ -54,7 +53,7 @@ export default function RegisterForm() {
           type="password"
           placeholder="insert you password..."
         />
-        <input type="submit" className="link" value="register" />
+        <input type="submit" className="link btn" value="Register" />
       </form>
       <SignInGoogleButton signInWithGoogle={signInWithGoogle} />
     </section>

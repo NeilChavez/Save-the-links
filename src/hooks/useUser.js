@@ -95,7 +95,7 @@ export function useUser() {
       if (err.code === "auth/invalid-email") textMessage = "You need to insert a valid email";
       if (err.code === "auth/wrong-password") textMessage = "The password is wrong";
       if (err.code === "auth/invalid-password") textMessage = "The password is not valid";
-      if (err.code === "auth/too-many-requests") textMessage = "To many requests :(";
+      if (err.code === "auth/too-many-requests") textMessage = "Too many requests :(";
       if (!textMessage) textMessage = "Something went wrong :("
       setMsgError(textMessage)
     }
@@ -116,7 +116,7 @@ export function useUser() {
       if (err.code === "auth/missing-email") textMessage = "Insert a email";
       if (err.code === "auth/invalid-email") textMessage = "You need to insert a valid email";
       if (err.code === "auth/invalid-password") textMessage = "The password is not valid";
-      if (err.code === "auth/too-many-requests") textMessage = "To many requests :(";
+      if (err.code === "auth/too-many-requests") textMessage = "Too many requests :(";
       
       setMsgError(textMessage)
     }
