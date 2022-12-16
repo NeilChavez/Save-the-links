@@ -16,7 +16,8 @@ export default function LinkForm() {
     e.preventDefault();
     if (!form.url || !form.name || !form.description)
       return toast("You need to fill the form", {
-        type: "error"
+        type: "error",
+        autoClose: 1000,
       });
     addOrEditLink(form);
     setForm(initialState);
@@ -32,7 +33,7 @@ export default function LinkForm() {
       [e.target.name]: e.target.value,
     });
   };
-  console.log(form)
+
   useEffect(() => {
     if (!currentId) return;
     let singleLink = links.find((link) => link.id === currentId);

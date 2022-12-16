@@ -58,7 +58,8 @@ function CrudContextProvider({ children }) {
         setData(data);
         console.log("MODIFICA avenuta con successo")
         toast('Successfully updated in your list!', {
-          type: "success"
+          type: "success",
+          autoClose: 1000,
         });
       } catch (err) {
         console.warn("errore nella MoDiFica", err)
@@ -73,7 +74,8 @@ function CrudContextProvider({ children }) {
         setData(data);
         console.log("inserimento dato con successo");
         toast('Successfully added to your list!', {
-          type: "success"
+          type: "success",
+          autoClose: 1000,
         });
       } catch (err) {
         console.warn(err);
@@ -91,7 +93,8 @@ function CrudContextProvider({ children }) {
       console.log({ "response deleteDoc": data });
       dispatch({ type: TYPES.DELETE_SUCCESS, payload: id });
       toast('Successfully deleted from your list!', {
-        type: "error"
+        type: "error",
+        autoClose: 1000,
       });
     } catch (err) {
       console.warn(err);

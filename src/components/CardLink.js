@@ -1,3 +1,6 @@
+import "./CardLink.css"
+import { ExternalLink } from 'react-external-link';
+
 export default function CardLink({ link, deleteLink, setCurrentId }) {
 
   const handleUpdate = () => setCurrentId(link.id);
@@ -14,9 +17,18 @@ export default function CardLink({ link, deleteLink, setCurrentId }) {
       >
         ✎
       </div>
-      <li>{link.description}</li>
-      <li>{link.name}</li>
-      <li>{link.url}</li>
+      <div className="card-info">
+        <li>
+
+          <ExternalLink href={`${link.url}`}>
+            <span>
+              {link.url}
+            </span>
+          </ExternalLink>
+        </li>
+        <li>{link.name}</li>
+        <li>{link.description}</li>
+      </div>
     </ul>
   );
 }

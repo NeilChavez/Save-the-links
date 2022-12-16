@@ -1,0 +1,9 @@
+.card-info{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+}
+
+.card-info a:hover {
+    color: rgb(207, 207, 207);
+}

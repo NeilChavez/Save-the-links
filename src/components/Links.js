@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
-import LinkForm from "./LinkForm";
-import { db } from "../firebase";
-import {
-  collection,
-  addDoc,
-  getDocs,
-  doc,
-  deleteDoc,
-} from "firebase/firestore";
-import { toast, ToastContainer } from "react-toastify";
+
+import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import "./Links.css";
 import CardLink from "./CardLink";
@@ -23,7 +15,6 @@ export default function Links() {
     <section className="card list-links">
       <ToastContainer
         position="top-right"
-        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         rtl={false}

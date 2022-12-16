@@ -23,7 +23,8 @@ export default function LoginForm() {
     e.preventDefault();
     if (!form.email || !form.password)
       return toast("You need to fill the form", {
-        type: "error"
+        type: "error",
+        autoClose: 1500,
       });
     login(form.email, form.password);
   };

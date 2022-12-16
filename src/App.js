@@ -1,6 +1,4 @@
 import "./App.css";
-import Links from "./components/Links";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContextProvider } from "./context/authContext";
 import { Routes, Route } from "react-router-dom";
@@ -29,9 +27,6 @@ function App() {
             }
           />
         </Routes>
-        {/*           
-        <Links />
-        <ToastContainer /> */}
       </AuthContextProvider>
     </>
   );
