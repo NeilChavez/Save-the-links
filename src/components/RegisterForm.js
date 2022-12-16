@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUser } from "../hooks/useUser";
 import "./RegisterForm.css";
 import SignInGoogleButton from "./SIgnInGoogleButton";
@@ -9,7 +9,7 @@ const initialForm = {
 };
 export default function RegisterForm() {
   const [form, setForm] = useState(initialForm);
-  const { register, signInWithGoogle, error, msgError } = useUser();
+  const { register, signInWithGoogle, error, msgError, setError } = useUser();
 
   const handleChange = (e) => {
     setForm({
@@ -22,6 +22,11 @@ export default function RegisterForm() {
       return alert("You have to fill in the email and password fields ;)");
     register(email, password);
   };
+
+  useEffect(()=>{
+    setError(false);
+    console.log("Register form si renderizza")
+  }, [setError])
 
 
   return (

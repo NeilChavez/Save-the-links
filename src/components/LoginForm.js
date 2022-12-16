@@ -11,13 +11,17 @@ const initialForm = {
   password: "",
 };
 export default function LoginForm() {
-  const { login, isLogged, signInWithGoogle, msgError, error } = useUser();
+  const { login, isLogged, signInWithGoogle, msgError, error, setError } = useUser();
   const [form, setForm] = useState(initialForm);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isLogged) navigate("/dashboard");
   }, [isLogged, navigate]);
+
+  useEffect(() => {
+    setError(false);
+  }, [setError])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +42,7 @@ export default function LoginForm() {
   return (
     <section className="section-login">
       <h3>Login with email and password</h3>
-      {error && <p>{msgError}</p>}
+      {error && <p className="error">{msgError}</p>}
 
       <form className="form-login" onSubmit={handleSubmit}>
 
