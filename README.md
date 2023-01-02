@@ -1,5 +1,5 @@
 # Save the Links
-
+This application is made with React JS.
 
 In this application the user can save the links of the websites that interest him. 
 The user can subsequently check his own Links and, if he wishes, he can modify and/or remove them.
