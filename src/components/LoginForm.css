@@ -37,9 +37,3 @@
   padding: 0.2rem 1rem;
   cursor: pointer
 }
-
-.no-elements-msg {
-  font-style: italic;
-  font-size: 1.3rem;
-  text-align: center;
-}

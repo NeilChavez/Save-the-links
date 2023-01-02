@@ -50,7 +50,7 @@ export default function LinkForm() {
     <div className="LinkForm card">
       <form className="Form" onSubmit={handleSubmit}>
         <label htmlFor="url">
-          Write a URL Link
+          Write a URL Link:
         </label>
         <input
           type="text"
@@ -58,11 +58,11 @@ export default function LinkForm() {
           id="url"
           value={form.url}
           onChange={handleChange}
-          placeholder="hhtps://www.someUrl.com"
+          placeholder="https://www.someUrl.com"
           autoComplete="off"
         />
         <label htmlFor="link-name">
-          Insert website name
+          Insert website name:
         </label>
         <input
           type="text"

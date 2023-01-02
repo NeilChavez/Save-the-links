@@ -4,7 +4,6 @@
   top: 0;
   height: 3.5rem;
   background-color: var(--secundary-color);
-  border-bottom: thin solid rgb(163, 162, 162);
   padding: 0.25rem 0;
   z-index: 999;
 }

@@ -10,7 +10,7 @@
   font-size: clamp(3rem, 5vw, 4rem);
 }
 .home-section span {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(4rem, 6vw, 5rem);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;

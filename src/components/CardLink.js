@@ -7,7 +7,7 @@ export default function CardLink({ link, deleteLink, setCurrentId }) {
   const handleDelete = () => deleteLink(link.id);
 
   return (
-    <ul key={link.name} className="card-link">
+    <div key={link.name} className="card-link">
       <div className="close-btn" onClick={handleDelete}>
         X
       </div>
@@ -18,17 +18,24 @@ export default function CardLink({ link, deleteLink, setCurrentId }) {
         ✎
       </div>
       <div className="card-info">
-        <li>
-
-          <ExternalLink href={`${link.url}`}>
-            <span>
+        <div>
+          <div className="card-description-title">Your link:</div>
+          <div className="card-link-wrapper">
+            🔗
+            <ExternalLink href={`${link.url}`} className="card-description-content">
               {link.url}
-            </span>
-          </ExternalLink>
-        </li>
-        <li>{link.name}</li>
-        <li>{link.description}</li>
+            </ExternalLink>
+          </div>
+        </div>
+        <div>
+          <div className="card-description-title">Site Name:</div>
+          <div className="card-description-content">{link.name}</div>
+        </div>
+        <div>
+          <div className="card-description-title">Description:</div>
+          <div className="card-description-content">{link.description}</div>
+        </div>
       </div>
-    </ul>
+    </div>
   );
 }

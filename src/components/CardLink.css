@@ -1,9 +1,29 @@
-.card-info{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.card-link-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 0.2rem;
+}
+.card-info a {
+  width: min-content;
+  border-bottom: medium solid transparent;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.card-info a:hover {
+  color: #fff;
+  border-bottom: medium solid #fff;
 }
 
-.card-info a:hover {
-    color: rgb(207, 207, 207);
+.card-description-title {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+.card-description-content{
+    padding-top: 0.3rem;
+    font-size: 1.1rem;
 }

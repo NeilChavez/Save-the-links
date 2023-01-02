@@ -4,7 +4,7 @@
   display: block;
   width: 100%;
   max-width: 100%;
-  padding: 2rem 2rem;
+  padding: 1.5rem 1.5rem;
   margin-left: auto;
   margin-right: auto;
   font-size: 1.5rem;
@@ -22,7 +22,7 @@
   align-items: center;
   position: absolute;
   top: 1rem;
-  right:1rem;
+  right: 1rem;
   cursor: pointer;
 }
 .edit-btn {
@@ -39,6 +39,14 @@
   top: 1rem;
   right: 2.5rem;
   cursor: pointer;
+}
+
+.no-elements-msg {
+  font-style: italic;
+  font-size: 1.3rem;
+  text-align: center;
+  grid-column: 1 / -1;
+  margin-top: 1rem;
 }
 
 .list-links {
