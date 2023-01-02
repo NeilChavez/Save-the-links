@@ -5,7 +5,7 @@ In this application the user can save the links of the websites that interest hi
 The user can subsequently check his own Links and, if he wishes, he can modify and/or remove them.
 
 I use Firebase to manage users and they can login/register with their email.
-The users can also authenticate through Google mail.
+Users can login and register through google
 
 Here is a [Live Demo](https://react-js-crud-firebase.vercel.app/).
 
