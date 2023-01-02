@@ -10,10 +10,10 @@ The users can also authenticate through Google mail.
 Here is a [Live Demo](https://react-js-crud-firebase.vercel.app/).
 
 ## Home component
-[![Live Demo](./public/assets/save-the-links-home.png"Save the Links")](https://react-js-crud-firebase.vercel.app/)
+[![Live Demo](./public/assets/save-the-links-home.png "Save the Links")](https://react-js-crud-firebase.vercel.app/)
 
 ## My page component
-[](./public/assets/save-the-links.png "Save the Links")](https://react-js-crud-firebase.vercel.app/)
+[![Live Demo](./public/assets/save-the-links.png  "Save the Links")](https://giffy-app-five.vercel.app/)
 
 
 ## Available Scripts
